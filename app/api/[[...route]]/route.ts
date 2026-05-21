@@ -39,6 +39,14 @@ const routes = app.post(
   })
 })
 
+.get('/test', (c) => {
+  return c.json({
+      title: "GNU",
+      location: "경상국립대학교",
+      status: "activated",
+      participants: 20
+  })
+})
 
 // 타입 공유를 위해 export
 export type AppType = typeof routes

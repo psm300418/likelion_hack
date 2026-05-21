@@ -7,10 +7,15 @@ export default function Home() {
 
   useEffect(() => {
     const fetchData = async () => {
-      // 여기서 중요! client.api.hello.$get() 이라고 치면 자동완성이 쫙 뜹니다.
-      const res = await client.api.hello.$get()
-      const json = (await res.json()) as { message: string }
-      setData(json.message)
+      // 기존 hello API 호출
+      const resHello = await client.api.hello.$get()
+      const jsonHello = (await resHello.json()) as { message: string }
+      setData(jsonHello.message)
+
+      // 새로운 test API 호출 및 console.log 확인
+      const resTest = await client.api.test.$get()
+      const jsonTest = await resTest.json()
+      console.log('API 응답 데이터:', jsonTest)
     }
     fetchData()
   }, [])
